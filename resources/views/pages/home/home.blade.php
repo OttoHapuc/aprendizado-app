@@ -15,18 +15,17 @@
                         class="hover:text-green-400">Banco de dados</a></li>
             </ul>
             <div class="gap-8 hidden lg:flex">
-                <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md">Login</button>
-                <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md login-button">Login</button>
+                <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md login-button" onclick="loginVisibility()">Entrar</button>
 
-                <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md">Registro</button>
+                <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md" onclick="registerVisibility()">Registro</button>
             </div>
         </nav>
     </header>
 
-    <section class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900 hidden">
+    <section id="base" class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900 hidden">
         <img src="{{asset('images/svg/dev/develop-in-desktop.svg')}}" alt="dev-login-image" class="w-[30%]">
         <div class="w-full lg:w-1/2 flex items-center justify-center rounded-xl">
-            <div class="max-w-md w-full p-6">
+            <section id="registrar" class="max-w-md w-full p-6">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Registro</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -80,8 +79,8 @@
                     <p>Já tem uma conta?<a href="#" class="text-black hover:underline"> Entrar aqui</a>
                     </p>
                 </div>
-            </div>
-            <div class="max-w-md w-full p-6 hidden">
+            </section>
+            <section id="entrar" class="max-w-md w-full p-6">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Entrar</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -125,7 +124,7 @@
                     <p>Já tem uma conta?<a href="#" class="text-black hover:underline"> Registrar aqui</a>
                     </p>
                 </div>
-            </div>
+            </section>
         </div>
     </section>
 
@@ -137,6 +136,13 @@
 
 
     <script>
+        var sectionBase = document.getElementById("base");
+        var sectionRegistrar = document.getElementById("registrar");
+        var sectionEntrar = document.getElementById("entrar");
+
+        sectionRegistrar.setAttribute("hidden", "true");
+        sectionEntrar.setAttribute("hidden", "true");
+
         document.addEventListener('DOMContentLoaded', function() {
             const loginModal = document.getElementById('login-modal');
             const loginButton = document.querySelector('.login-button');
@@ -145,5 +151,28 @@
                 loginModal.classList.toggle('hidden');
             });
         });
+
+        function loginVisibility() {
+            if (sectionEntrar.hasAttribute("hidden")) {
+                sectionBase.classList.remove("hidden");
+                sectionRegistrar.setAttribute("hidden", "true");
+                sectionEntrar.removeAttribute("hidden");
+            } else {
+                sectionEntrar.setAttribute("hidden", "true");
+                sectionBase.classList.add("hidden");
+            }
+        }
+
+        function registerVisibility() {
+            if (sectionRegistrar.hasAttribute("hidden")) {
+                sectionBase.classList.remove("hidden");
+                sectionEntrar.setAttribute("hidden", "true");
+                sectionRegistrar.removeAttribute("hidden");
+
+            } else {
+                sectionRegistrar.setAttribute("hidden", "true");
+                sectionBase.classList.add("hidden");
+            }
+        }
     </script>
 @endsection

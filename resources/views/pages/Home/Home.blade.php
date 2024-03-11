@@ -24,7 +24,7 @@
     </header>
 
     <section class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900">
-        <img src="{{asset('images/svg/dev/develop-in-desktop.svg')}}" alt="dev-login-image" class="w-[30%]">
+        <img src="{{ asset('images/svg/dev/develop-in-desktop.svg') }}" alt="dev-login-image" class="w-[30%]">
         <div class="w-full lg:w-1/2 flex items-center justify-center rounded-xl">
             <div class="max-w-md w-full p-6">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Registro</h1>
@@ -51,6 +51,7 @@
                     <p>ou com email</p>
                 </div>
                 <form action="#" method="POST" class="space-y-4">
+                    @csrf
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-400">Nome</label>
                         <input type="text" id="name" name="name"
@@ -67,7 +68,8 @@
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
                     </div>
                     <div>
-                        <label for="password-confirm" class="block text-sm font-medium text-gray-400">Confirmação de senha</label>
+                        <label for="password-confirm" class="block text-sm font-medium text-gray-400">Confirmação de
+                            senha</label>
                         <input type="password-confirm" id="password-confirm" name="password-confirm"
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
                     </div>
@@ -81,7 +83,7 @@
                     </p>
                 </div>
             </div>
-            <div class="max-w-md w-full p-6 hidden">
+            <div class="max-w-md w-full p-6">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Entrar</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -105,16 +107,23 @@
                 <div class="mt-4 text-sm text-gray-600 text-center">
                     <p>ou com email</p>
                 </div>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{ route('login') }}" method="POST" class="space-y-4">
+                    @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-400">Email</label>
                         <input type="text" id="email" name="email"
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
+                        @if ($errors->has('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-400">Senha</label>
                         <input type="password" id="password" name="password"
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
+                        @if ($errors->has('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
                     </div>
                     <div>
                         <button type="submit"

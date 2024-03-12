@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Auth\Authentication\Services;
+namespace App\Http\Auth\Authentication\Service;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -12,9 +12,6 @@ class AuthenticationService
             return view('pages.Dashboard.Dashboard');
         }
 
-        return redirect()->route('/')
-            ->withErrors([
-                'email' => 'Please login to access the dashboard.',
-            ])->onlyInput('email');
+        return redirect()->route('/');
     }
 }

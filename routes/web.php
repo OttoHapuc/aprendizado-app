@@ -3,6 +3,7 @@
 use App\Http\Auth\Authentication\Controller\AuthenticationController;
 use App\Http\Auth\Login\Controller\LoginController;
 use App\Http\Auth\Logout\Controller\LogoutController;
+use App\Http\Auth\Register\Controller\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,8 @@ Route::get('/Metodos', function () {
 });
 
 
+Route::post('/Register', [RegisterController::class, 'register'])->name('register');
 Route::post('/Login', [LoginController::class, 'authorization'])->name('login');
 Route::post('/Logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::post('/authenticate', [AuthenticationController::class, 'authentication'])->name('authenticate');
+Route::get('/Dashboard', [AuthenticationController::class, 'authentication'])->name('dashboard')->middleware('auth');

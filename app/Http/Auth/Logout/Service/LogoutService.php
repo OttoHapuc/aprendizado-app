@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Auth\Logout\Services;
+namespace App\Http\Auth\Logout\Service;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +11,7 @@ class LogoutService
         Auth::logout();
         $data->session()->invalidate();
         $data->session()->regenerateToken();
-        return redirect()->route('/')
+        return redirect()->intended('/')
             ->withSuccess('You have logged out successfully!');;
     }
 }

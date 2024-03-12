@@ -12,7 +12,8 @@ class RegisterController extends Controller
         protected RegisterService $service
     ) {}
 
-    public function login(Request $request){
-        $this->service->create($request);
+    public function register(Request $request){
+        $data = $this->service->create($request);
+        return $data;
     }
 }

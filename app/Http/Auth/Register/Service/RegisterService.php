@@ -2,7 +2,7 @@
 
 namespace App\Http\Auth\Register\Service;
 
-use App\Repositories\UserRepositoryInterface as RepositoriesUserRepositoryInterface;
+use App\Http\User\Interace\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterService
 {
     public function __construct(
-        protected RepositoriesUserRepositoryInterface $repository
+        protected UserRepositoryInterface $repository
     )
     {}
 
@@ -29,7 +29,7 @@ class RegisterService
         ]);
 
         $credentials = $data->only('email', 'password');
-
+        
         Auth::attempt($credentials);
         $data->session()->regenerate();
 

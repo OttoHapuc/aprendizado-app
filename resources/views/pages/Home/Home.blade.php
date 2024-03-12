@@ -50,7 +50,7 @@
                 <div class="mt-4 text-sm text-gray-600 text-center">
                     <p>ou com email</p>
                 </div>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{ route('register') }}" method="POST" class="space-y-4">
                     @csrf
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-400">Nome</label>
@@ -68,9 +68,9 @@
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
                     </div>
                     <div>
-                        <label for="password-confirm" class="block text-sm font-medium text-gray-400">Confirmação de
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-400">Confirmação de
                             senha</label>
-                        <input type="password-confirm" id="password-confirm" name="password-confirm"
+                        <input type="password" id="password_confirmation" name="password_confirmation"
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
                     </div>
                     <div>

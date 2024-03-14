@@ -1,6 +1,6 @@
-@extends('pages.home.home')
+@extends('pages.Home.Home')
 
-@section('arquitetura')
+@section('home')
     <section class="mx-auto py-8">
 
     </section>

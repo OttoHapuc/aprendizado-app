@@ -14,9 +14,8 @@
     @yield('home-page')
 
     {{-- Dashboad --}}
-
     {{-- paginas com controle de sessao --}}
-
+    @yield('dashboard')
     {{-- studies --}}
 
     {{-- stage 1 = paginas com atividades --}}

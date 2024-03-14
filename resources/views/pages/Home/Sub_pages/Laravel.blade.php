@@ -1,4 +1,4 @@
-@extends('pages.home.home')
+@extends('pages.Home.Home')
 
 @section('laravel')
     <article class="mx-2 md:mx-8 p-2 md:p-8 bg-gray-900 rounded-lg shadow-md shadow-2xl">

@@ -15,17 +15,16 @@
                         class="hover:text-green-400">Banco de dados</a></li>
             </ul>
             <div class="gap-8 hidden lg:flex">
-                <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md login-button" onclick="loginVisibility()">Entrar</button>
-
+            <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md login-button" onclick="loginVisibility()">Entrar</button>
                 <button class="hover:text-green-400 py-2 px-4 bg-gray-800 rounded-md" onclick="registerVisibility()">Registro</button>
             </div>
         </nav>
     </header>
 
-    <section id="base" class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900 hidden">
-        <img src="{{asset('images/svg/dev/develop-in-desktop.svg')}}" alt="dev-login-image" class="w-[30%]">
+    <section class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900">
+    <img src="{{ asset('images/svg/dev/develop-in-desktop.svg') }}" alt="dev-login-image" class="w-[30%]">
         <div class="w-full lg:w-1/2 flex items-center justify-center rounded-xl">
-            <section id="registrar" class="max-w-md w-full p-6">
+            <div class="max-w-md w-full p-6">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Registro</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -49,7 +48,8 @@
                 <div class="mt-4 text-sm text-gray-600 text-center">
                     <p>ou com email</p>
                 </div>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{ route('register') }}" method="POST" class="space-y-4">
+                    @csrf
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-400">Nome</label>
                         <input type="text" id="name" name="name"
@@ -66,8 +66,9 @@
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
                     </div>
                     <div>
-                        <label for="password-confirm" class="block text-sm font-medium text-gray-400">Confirmação de senha</label>
-                        <input type="password-confirm" id="password-confirm" name="password-confirm"
+                    <label for="password_confirmation" class="block text-sm font-medium text-gray-400">Confirmação de
+                            senha</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation"
                             class="text-gray-300 bg-gray-600 mt-1 p-2 w-full rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 transition-colors duration-300">
                     </div>
                     <div>
@@ -79,8 +80,8 @@
                     <p>Já tem uma conta?<a href="#" class="text-black hover:underline"> Entrar aqui</a>
                     </p>
                 </div>
-            </section>
-            <section id="entrar" class="max-w-md w-full p-6">
+            </div>
+            <div class="max-w-md w-full p-6 hidden">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Entrar</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -104,7 +105,8 @@
                 <div class="mt-4 text-sm text-gray-600 text-center">
                     <p>ou com email</p>
                 </div>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{ route('login') }}" method="POST" class="space-y-4">
+                    @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-400">Email</label>
                         <input type="text" id="email" name="email"
@@ -124,7 +126,7 @@
                     <p>Já tem uma conta?<a href="#" class="text-black hover:underline"> Registrar aqui</a>
                     </p>
                 </div>
-            </section>
+            </div>
         </div>
     </section>
 
@@ -139,10 +141,8 @@
         var sectionBase = document.getElementById("base");
         var sectionRegistrar = document.getElementById("registrar");
         var sectionEntrar = document.getElementById("entrar");
-
         sectionRegistrar.setAttribute("hidden", "true");
         sectionEntrar.setAttribute("hidden", "true");
-
         document.addEventListener('DOMContentLoaded', function() {
             const loginModal = document.getElementById('login-modal');
             const loginButton = document.querySelector('.login-button');
@@ -162,13 +162,11 @@
                 sectionBase.classList.add("hidden");
             }
         }
-
         function registerVisibility() {
             if (sectionRegistrar.hasAttribute("hidden")) {
                 sectionBase.classList.remove("hidden");
                 sectionEntrar.setAttribute("hidden", "true");
                 sectionRegistrar.removeAttribute("hidden");
-
             } else {
                 sectionRegistrar.setAttribute("hidden", "true");
                 sectionBase.classList.add("hidden");

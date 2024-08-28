@@ -21,10 +21,10 @@
         </nav>
     </header>
 
-    <section class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900">
+<section id="base" class="flex flex-wrap justify-center items-center rounded-l-full lg:bg-gray-900 hidden">
     <img src="{{ asset('images/svg/dev/develop-in-desktop.svg') }}" alt="dev-login-image" class="w-[30%]">
         <div class="w-full lg:w-1/2 flex items-center justify-center rounded-xl">
-            <div class="max-w-md w-full p-6">
+            <section id="registrar" class="max-w-md w-full p-6">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Registro</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -80,8 +80,8 @@
                     <p>Já tem uma conta?<a href="#" class="text-black hover:underline"> Entrar aqui</a>
                     </p>
                 </div>
-            </div>
-            <div class="max-w-md w-full p-6 hidden">
+            </section>
+            <section id="entrar" class="max-w-md w-full m-10 py-14">
                 <h1 class="text-3xl font-semibold mb-6 text-gray-400 text-center">Entrar</h1>
                 <h1 class="text-sm font-semibold mb-6 text-gray-400 text-center">
                     Seja mais um conosco, neste mundo de estudos e dores de cabeça!!
@@ -126,9 +126,9 @@
                     <p>Já tem uma conta?<a href="#" class="text-black hover:underline"> Registrar aqui</a>
                     </p>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+</section>
 
     @yield('home')
     @yield('docker')
@@ -143,14 +143,6 @@
         var sectionEntrar = document.getElementById("entrar");
         sectionRegistrar.setAttribute("hidden", "true");
         sectionEntrar.setAttribute("hidden", "true");
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginModal = document.getElementById('login-modal');
-            const loginButton = document.querySelector('.login-button');
-
-            loginButton.addEventListener('click', function() {
-                loginModal.classList.toggle('hidden');
-            });
-        });
 
         function loginVisibility() {
             if (sectionEntrar.hasAttribute("hidden")) {

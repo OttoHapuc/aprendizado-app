@@ -13,18 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home.partials.home');
-});
-Route::get('/Docker', function () {
-    return view('pages.home.partials.docker');
-});
-Route::get('/Laravel', function () {
-    return view('pages.home.partials.laravel');
-});
-Route::get('/Arquitetura', function () {
-    return view('pages.home.partials.arquitetura');
-});
-Route::get('/Metodos', function () {
-    return view('pages.home.partials.metodos');
-});
+use App\Http\Controllers\HomeController;
+
+Route::get('/', [HomeController::class, 'index']);

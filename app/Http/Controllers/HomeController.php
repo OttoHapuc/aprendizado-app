@@ -8,10 +8,10 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $city = ['name' => 'Pindamonhangaba', 'igm' => 'https://upload.wikimedia.org/wikipedia/commons/4/40/Bras%C3%A3o_Pindamonhangaba.png'];
+        $city = ['name' => 'Pindamonhangaba', 'img' => 'https://upload.wikimedia.org/wikipedia/commons/4/40/Bras%C3%A3o_Pindamonhangaba.png'];
         $units = [
-            ['id' => 1, 'name' => 'Central'],
-            ['id' => 2, 'name' => 'Sul'],
+            ['id' => 1, 'value' => 'Central'],
+            ['id' => 2, 'value' => 'Sul'],
         ];
 
         $newsList = [

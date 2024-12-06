@@ -4,8 +4,13 @@ export default {
         "./resources/**/*.{blade.php,js,ts,vue}",
       ],
   theme: {
-    extend: {},
+    extend: {
+      
+    },
   },
   plugins: [],
 }
+
+
+
 
